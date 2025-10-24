@@ -1,5 +1,11 @@
 # Sinhala Subtitles for HuraWatch
 
+![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-blue?logo=googlechrome&logoColor=white)
+![Version](https://img.shields.io/badge/version-1.0.0-green)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Manifest](https://img.shields.io/badge/manifest-v3-orange)
+![Language](https://img.shields.io/badge/language-Sinhala-red)
+
 A Chrome extension that enables Sinhala subtitle support for videos on HuraWatch (hurawatchzz.tv). Watch your favorite movies and TV shows with custom Sinhala subtitles!
 
 ## Features
