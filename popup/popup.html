@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sinhala Subtitles for HuraWatch</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <h1>Sinhala Subtitles</h1>
+      <p class="subtitle">for HuraWatch</p>
+    </header>
+
+    <!-- Status Section -->
+    <div class="status-section">
+      <div class="status-item">
+        <span class="status-label">Video:</span>
+        <span id="video-status" class="status-value">Detecting...</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">Subtitles:</span>
+        <span id="subtitle-status" class="status-value">Not loaded</span>
+      </div>
+    </div>
+
+    <!-- Upload Section -->
+    <div class="upload-section">
+      <input type="file" id="file-input" accept=".srt,.vtt" hidden>
+      <button id="upload-btn" class="btn btn-primary">
+        <span class="icon">📁</span>
+        Upload Subtitle File
+      </button>
+      <p class="hint">Supports .srt and .vtt formats</p>
+    </div>
+
+    <!-- Controls Section -->
+    <div class="controls-section">
+      <h3>Controls</h3>
+
+      <!-- Visibility Toggle -->
+      <div class="control-group">
+        <label>Visibility:</label>
+        <button id="toggle-visibility-btn" class="btn btn-secondary">
+          <span id="visibility-icon">👁️</span>
+          <span id="visibility-text">Hide</span>
+        </button>
+      </div>
+
+      <!-- Timing Adjustment -->
+      <div class="control-group">
+        <label>Timing Adjustment:</label>
+        <div class="timing-controls">
+          <button id="timing-minus-btn" class="btn btn-small" title="Delay by 0.5s">-0.5s</button>
+          <span id="timing-display" class="timing-value">0.0s</span>
+          <button id="timing-plus-btn" class="btn btn-small" title="Advance by 0.5s">+0.5s</button>
+          <button id="timing-reset-btn" class="btn btn-small btn-reset" title="Reset timing">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Section (Collapsed by default) -->
+    <div class="settings-section">
+      <button id="settings-toggle" class="settings-toggle">
+        <span>⚙️ Appearance Settings</span>
+        <span class="arrow">▼</span>
+      </button>
+
+      <div id="settings-panel" class="settings-panel" style="display: none;">
+        <!-- Font Size -->
+        <div class="setting-item">
+          <label for="font-size-select">Font Size:</label>
+          <select id="font-size-select" class="select">
+            <option value="small">Small</option>
+            <option value="medium" selected>Medium</option>
+            <option value="large">Large</option>
+            <option value="x-large">Extra Large</option>
+          </select>
+        </div>
+
+        <!-- Font Color -->
+        <div class="setting-item">
+          <label for="font-color-input">Text Color:</label>
+          <input type="color" id="font-color-input" value="#FFFFFF" class="color-input">
+        </div>
+
+        <!-- Background Color -->
+        <div class="setting-item">
+          <label for="bg-color-input">Background:</label>
+          <input type="color" id="bg-color-input" value="#000000" class="color-input">
+        </div>
+
+        <!-- Background Opacity -->
+        <div class="setting-item">
+          <label for="opacity-slider">Opacity:</label>
+          <div class="slider-container">
+            <input type="range" id="opacity-slider" min="0" max="100" value="70" class="slider">
+            <span id="opacity-value">70%</span>
+          </div>
+        </div>
+
+        <!-- Position -->
+        <div class="setting-item">
+          <label for="position-select">Position:</label>
+          <select id="position-select" class="select">
+            <option value="top">Top</option>
+            <option value="middle">Middle</option>
+            <option value="bottom" selected>Bottom</option>
+          </select>
+        </div>
+
+        <!-- Apply Settings Button -->
+        <button id="apply-settings-btn" class="btn btn-primary btn-full">Apply Settings</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p class="version">Version 1.0.0</p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../utils/storage.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

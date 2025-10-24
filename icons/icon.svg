@@ -1,0 +1,7 @@
+<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+  <rect width="128" height="128" fill="#4A90E2" rx="16"/>
+  <rect x="16" y="80" width="96" height="32" fill="white" rx="4" opacity="0.9"/>
+  <rect x="20" y="84" width="88" height="8" fill="#4A90E2" rx="2"/>
+  <rect x="20" y="96" width="60" height="8" fill="#4A90E2" rx="2"/>
+  <text x="64" y="55" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white" text-anchor="middle">සි</text>
+</svg>

@@ -1,0 +1,141 @@
+/**
+ * Subtitle Overlay Styles
+ * Ensures proper display of Sinhala subtitles over video
+ */
+
+#sinhala-subtitle-overlay,
+.sinhala-subtitle-container {
+  /* Positioning */
+  position: absolute;
+  left: 50%;
+  bottom: 60px; /* Changed from top to bottom for better overflow handling */
+  transform: translateX(-50%);
+  z-index: 2147483647; /* Maximum z-index to ensure visibility */
+
+  /* Sizing */
+  max-width: 90%;
+  max-height: 30%; /* Limit height to prevent overflow */
+  width: auto;
+  min-height: 40px;
+  overflow-y: auto; /* Allow scrolling if text is extremely long */
+
+  /* Text styling */
+  font-family: 'Noto Sans Sinhala', 'Iskoola Pota', Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.5; /* Increased from 1.4 for better readability */
+  color: #FFFFFF;
+  text-align: center;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-word; /* Break long words if necessary */
+  overflow-wrap: break-word; /* Additional word breaking */
+
+  /* Background */
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 8px 16px;
+  border-radius: 4px;
+
+  /* Visual effects */
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    2px 2px 4px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+
+  /* Transitions */
+  transition: opacity 0.2s ease-in-out;
+  opacity: 1;
+
+  /* Ensure proper rendering */
+  pointer-events: none; /* Don't block video controls */
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide when empty */
+#sinhala-subtitle-overlay:empty,
+.sinhala-subtitle-container:empty {
+  display: none !important;
+}
+
+/* Fullscreen compatibility */
+video:fullscreen ~ #sinhala-subtitle-overlay,
+video:-webkit-full-screen ~ #sinhala-subtitle-overlay,
+video:-moz-full-screen ~ #sinhala-subtitle-overlay,
+video:-ms-fullscreen ~ #sinhala-subtitle-overlay {
+  position: fixed !important;
+}
+
+/* Ensure visibility in fullscreen mode */
+*:-webkit-full-screen #sinhala-subtitle-overlay,
+*:-moz-full-screen #sinhala-subtitle-overlay,
+*:-ms-fullscreen #sinhala-subtitle-overlay,
+*:fullscreen #sinhala-subtitle-overlay {
+  position: fixed !important;
+  z-index: 2147483647 !important;
+}
+
+/* Responsive font sizing for different screen sizes */
+@media (max-width: 768px) {
+  #sinhala-subtitle-overlay,
+  .sinhala-subtitle-container {
+    font-size: 16px;
+    max-width: 95%;
+  }
+}
+
+@media (min-width: 1920px) {
+  #sinhala-subtitle-overlay,
+  .sinhala-subtitle-container {
+    font-size: 24px;
+  }
+}
+
+/* Ensure Sinhala Unicode characters render correctly */
+#sinhala-subtitle-overlay,
+.sinhala-subtitle-container {
+  unicode-bidi: embed;
+  direction: ltr;
+}
+
+/* Multi-line subtitle support */
+#sinhala-subtitle-overlay br,
+.sinhala-subtitle-container br {
+  display: block;
+  content: "";
+  margin: 4px 0;
+}
+
+/* Custom scrollbar for long subtitles (webkit browsers) */
+#sinhala-subtitle-overlay::-webkit-scrollbar,
+.sinhala-subtitle-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+#sinhala-subtitle-overlay::-webkit-scrollbar-track,
+.sinhala-subtitle-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
+#sinhala-subtitle-overlay::-webkit-scrollbar-thumb,
+.sinhala-subtitle-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+}
+
+#sinhala-subtitle-overlay::-webkit-scrollbar-thumb:hover,
+.sinhala-subtitle-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Better handling of long text - smooth scrolling */
+#sinhala-subtitle-overlay,
+.sinhala-subtitle-container {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.3);
+}

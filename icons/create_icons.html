@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head><title>Generate Icons</title></head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+function createIcon(size) {
+  const canvas = document.getElementById('canvas');
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext('2d');
+
+  // Blue background
+  ctx.fillStyle = '#4A90E2';
+  ctx.fillRect(0, 0, size, size);
+
+  // Subtitle box at bottom
+  const boxHeight = size * 0.25;
+  const boxY = size * 0.625;
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+  ctx.fillRect(size * 0.125, boxY, size * 0.75, boxHeight);
+
+  // Subtitle lines
+  ctx.fillStyle = '#4A90E2';
+  ctx.fillRect(size * 0.15, boxY + boxHeight * 0.15, size * 0.7, boxHeight * 0.25);
+  ctx.fillRect(size * 0.15, boxY + boxHeight * 0.55, size * 0.5, boxHeight * 0.25);
+
+  // Save canvas as PNG
+  canvas.toBlob(function(blob) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'icon' + size + '.png';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  });
+}
+
+// Generate all sizes
+setTimeout(function() { createIcon(16); }, 100);
+setTimeout(function() { createIcon(48); }, 300);
+setTimeout(function() { createIcon(128); }, 500);
+</script>
+<h2>Icon Generator</h2>
+<p>Icons will download automatically. If not, click the buttons below:</p>
+<button onclick="createIcon(16)">Generate 16x16</button>
+<button onclick="createIcon(48)">Generate 48x48</button>
+<button onclick="createIcon(128)">Generate 128x128</button>
+<p>After downloading, place the PNG files in the icons/ folder.</p>
+</body>
+</html>
